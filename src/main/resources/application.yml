@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      eclipselink:
+        ddl-generation: create-tables
+        logging.level: FINE
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=spring
+    username: postgres
+    password: postgres
+    initialization-mode: always

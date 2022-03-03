@@ -1,4 +1,4 @@
-package com.study.SpringSecurity.config;
+package com.study.springsecurity.config;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.study.SpringSecurity.handler.CustomAuthenticationFailureHandler;
-import com.study.SpringSecurity.handler.CustomAuthenticationSuccessHandler;
+import com.study.springsecurity.handler.CustomAuthenticationFailureHandler;
+import com.study.springsecurity.handler.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableAsync
@@ -28,9 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().successHandler(authenticationSuccessHandler)
-            .failureHandler(authenticationFailureHandler);
-        http.authorizeRequests().antMatchers("/error**").permitAll().anyRequest().authenticated();
+        http.formLogin().defaultSuccessUrl("/main", true);
+        http.authorizeRequests().anyRequest().authenticated();
     }
 
     @Override

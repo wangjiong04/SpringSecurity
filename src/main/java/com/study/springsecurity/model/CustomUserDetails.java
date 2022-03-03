@@ -1,36 +1,36 @@
-package com.study.SpringSecurity.model;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+package com.study.springsecurity.model;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
-public class User implements UserDetails {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-    private final String username;
-    private final String password;
-    private final String authority;
+import com.study.springsecurity.entity.User;
 
-    public User(String username, String password, String authority) {
-        this.username = username;
-        this.password = password;
-        this.authority = authority;
+public class CustomUserDetails implements UserDetails {
+
+    private final User user;
+
+    public CustomUserDetails(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> authority);
+        return user.getAuthorities().stream().map(a -> new SimpleGrantedAuthority(a.getName()))
+            .collect(Collectors.toList());
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return user.getUsername();
     }
 
     @Override
@@ -52,5 +52,8 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-}
 
+    public final User getUser() {
+        return user;
+    }
+}

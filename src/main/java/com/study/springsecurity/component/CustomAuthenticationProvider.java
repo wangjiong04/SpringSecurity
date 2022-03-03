@@ -1,4 +1,4 @@
-package com.study.SpringSecurity.component;
+package com.study.springsecurity.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -6,18 +6,20 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.study.springsecurity.service.CustomUserDetailsService;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder    passwordEncoder = PasswordEncoderFactories
+        .createDelegatingPasswordEncoder();
 
     @Override
     public Authentication authenticate(Authentication authentication) {
