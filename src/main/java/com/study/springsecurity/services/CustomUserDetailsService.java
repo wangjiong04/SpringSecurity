@@ -1,4 +1,4 @@
-package com.study.springsecurity.service;
+package com.study.springsecurity.services;
 
 import java.util.function.Supplier;
 
@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.study.springsecurity.entity.User;
-import com.study.springsecurity.model.CustomUserDetails;
-import com.study.springsecurity.repository.UserRepository;
+import com.study.springsecurity.entities.User;
+import com.study.springsecurity.models.CustomUserDetails;
+import com.study.springsecurity.repositories.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

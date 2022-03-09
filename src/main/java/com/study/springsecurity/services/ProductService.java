@@ -1,12 +1,12 @@
-package com.study.springsecurity.service;
+package com.study.springsecurity.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.study.springsecurity.entity.Product;
-import com.study.springsecurity.repository.ProductRepository;
+import com.study.springsecurity.entities.Product;
+import com.study.springsecurity.repositories.ProductRepository;
 
 @Service
 public class ProductService {

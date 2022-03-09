@@ -1,4 +1,4 @@
-package com.study.springsecurity.controller;
+package com.study.springsecurity.controllers;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;

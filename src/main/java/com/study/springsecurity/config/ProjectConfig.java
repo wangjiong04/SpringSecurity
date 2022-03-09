@@ -11,12 +11,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.study.springsecurity.handler.CustomAuthenticationFailureHandler;
-import com.study.springsecurity.handler.CustomAuthenticationSuccessHandler;
+import com.study.springsecurity.handlers.CustomAuthenticationFailureHandler;
+import com.study.springsecurity.handlers.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableAsync
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationProvider             authenticationProvider;
 

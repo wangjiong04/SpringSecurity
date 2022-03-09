@@ -1,4 +1,4 @@
-package com.study.springsecurity.entity;
+package com.study.springsecurity.entities;
 
 import javax.persistence.*;
 

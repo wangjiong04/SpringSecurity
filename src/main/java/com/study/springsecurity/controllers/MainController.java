@@ -1,4 +1,4 @@
-package com.study.springsecurity.controller;
+package com.study.springsecurity.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.study.springsecurity.service.ProductService;
+import com.study.springsecurity.services.ProductService;
 
 @Controller
 public class MainController {

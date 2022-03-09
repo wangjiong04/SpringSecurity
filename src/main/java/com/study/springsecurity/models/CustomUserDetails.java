@@ -1,4 +1,4 @@
-package com.study.springsecurity.model;
+package com.study.springsecurity.models;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.study.springsecurity.entity.User;
+import com.study.springsecurity.entities.User;
 
 public class CustomUserDetails implements UserDetails {
 

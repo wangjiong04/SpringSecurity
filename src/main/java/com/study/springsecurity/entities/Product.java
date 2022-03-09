@@ -1,4 +1,4 @@
-package com.study.springsecurity.entity;
+package com.study.springsecurity.entities;
 
 import com.study.springsecurity.enums.Currency;
 
