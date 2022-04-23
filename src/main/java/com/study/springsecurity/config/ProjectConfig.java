@@ -10,7 +10,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.study.springsecurity.filters.AuthenticationLoggingFilter;
+import com.study.springsecurity.filters.RequestValidationFilter;
 import com.study.springsecurity.handlers.CustomAuthenticationFailureHandler;
 import com.study.springsecurity.handlers.CustomAuthenticationSuccessHandler;
 
@@ -29,7 +32,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().defaultSuccessUrl("/main", true);
-        http.authorizeRequests().anyRequest().authenticated();
+        http.addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class)
+            .addFilterAfter(new AuthenticationLoggingFilter(), BasicAuthenticationFilter.class)
+            .authorizeRequests().anyRequest().authenticated();
     }
 
     @Override

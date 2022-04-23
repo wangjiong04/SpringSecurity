@@ -1,24 +1,21 @@
 package com.study.springsecurity.filters;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-public class RequestValidationFilter implements Filter {
+public class AuthenticationLoggingFilter implements Filter {
+
+    private final Logger logger = Logger.getLogger(AuthenticationLoggingFilter.class.getName());
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain filterChain) throws IOException, ServletException {
         var httpRequest = (HttpServletRequest) request;
-        var httpResponse = (HttpServletResponse) response;
         String requestId = httpRequest.getHeader("Request-Id");
-        if (requestId == null || requestId.isBlank()) {
-            httpResponse.setStatus(HttpServletResponse.SC_ACCEPTED);
-            return;
-        }
-
+        logger.info("Successfully authenticated request with id " + requestId);
         filterChain.doFilter(request, response);
     }
 }
