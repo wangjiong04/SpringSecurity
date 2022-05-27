@@ -2,7 +2,14 @@ package com.study.springsecurity.entities;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Table(name = "users")
 @Entity
@@ -14,6 +21,7 @@ public class User {
 
     private String          username;
     private String          password;
+    private String          code;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Authority> authorities;
@@ -48,5 +56,13 @@ public class User {
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

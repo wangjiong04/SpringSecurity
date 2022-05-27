@@ -8,11 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import com.study.springsecurity.services.CustomUserDetailsService;
 
-@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
